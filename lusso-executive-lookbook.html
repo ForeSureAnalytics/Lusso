@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Lusso | Executive Travel — La Mesa RV</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #0e0e0d;
+    --bone: #f4f0eb;
+    --warm-white: #faf8f5;
+    --gold: #b8975a;
+    --gold-light: #d4b87a;
+    --mid: #6b6560;
+    --rule: #d8d2ca;
+  }
+
+  html { font-size: 16px; }
+
+  body {
+    background: var(--warm-white);
+    color: var(--ink);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    height: 100vh;
+    min-height: 600px;
+    background: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 60px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #1a1714 0%, #0e0e0d 60%, #1c1810 100%);
+  }
+
+  .cover-texture {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(255,255,255,0.5) 2px,
+      rgba(255,255,255,0.5) 3px
+    );
+  }
+
+  .cover-accent {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(184,151,90,0.08) 0%, transparent 70%);
+    border-left: 1px solid rgba(184,151,90,0.15);
+  }
+
+  .cover-logo {
+    position: absolute;
+    top: 48px;
+    left: 64px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 11px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    z-index: 2;
+  }
+
+  .cover-logo span {
+    color: var(--gold);
+  }
+
+  .cover-content {
+    position: relative;
+    z-index: 2;
+    max-width: 560px;
+  }
+
+  .cover-eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 10px;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(52px, 8vw, 88px);
+    line-height: 0.95;
+    color: #fff;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+  }
+
+  .cover-title em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .cover-subtitle {
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 40px;
+  }
+
+  .cover-rule {
+    width: 48px;
+    height: 1px;
+    background: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .cover-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 17px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.5;
+  }
+
+  /* ── INTRO ── */
+  .intro {
+    background: var(--warm-white);
+    padding: 100px 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .intro-statement {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(26px, 3.5vw, 38px);
+    line-height: 1.35;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .intro-statement em {
+    font-style: italic;
+    color: var(--gold);
+  }
+
+  .intro-body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--mid);
+  }
+
+  .intro-body p + p { margin-top: 20px; }
+
+  /* ── SECTION HEADERS ── */
+  .section-label {
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 9px;
+    letter-spacing: 0.55em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  /* ── FEATURES ── */
+  .features {
+    background: var(--bone);
+    padding: 80px 64px;
+  }
+
+  .features-header {
+    display: flex;
+    align-items: baseline;
+    gap: 32px;
+    margin-bottom: 64px;
+  }
+
+  .features-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 36px;
+    letter-spacing: -0.01em;
+  }
+
+  .features-rule {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .feature-card {
+    background: var(--warm-white);
+    padding: 40px 36px;
+    transition: background 0.3s ease;
+  }
+
+  .feature-card:hover { background: #fff; }
+
+  .feature-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .feature-name {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    color: var(--ink);
+  }
+
+  .feature-desc {
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 1.75;
+    color: var(--mid);
+  }
+
+  /* ── SPEC STRIP ── */
+  .spec-strip {
+    background: var(--ink);
+    padding: 56px 64px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+  }
+
+  .spec-item {
+    padding: 0 40px 0 0;
+    border-right: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .spec-item:last-child { border-right: none; }
+
+  .spec-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 42px;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .spec-value span {
+    font-size: 18px;
+    color: var(--gold);
+    margin-left: 2px;
+  }
+
+  .spec-label {
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 9px;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.35);
+  }
+
+  /* ── IDEAL FOR ── */
+  .ideal {
+    padding: 80px 64px;
+    background: var(--warm-white);
+  }
+
+  .ideal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px;
+    margin-top: 48px;
+  }
+
+  .ideal-item {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+  }
+
+  .ideal-icon {
+    width: 2px;
+    min-width: 2px;
+    height: 40px;
+    background: var(--gold);
+    margin-top: 4px;
+  }
+
+  .ideal-name {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .ideal-desc {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.8;
+  }
+
+  /* ── GRECH HERITAGE ── */
+  .heritage {
+    background: var(--bone);
+    padding: 80px 64px;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    gap: 80px;
+    align-items: center;
+  }
+
+  .heritage-pull {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(22px, 2.8vw, 30px);
+    line-height: 1.4;
+    color: var(--ink);
+    border-left: 2px solid var(--gold);
+    padding-left: 28px;
+  }
+
+  .heritage-body {
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--mid);
+    line-height: 1.9;
+  }
+
+  .heritage-body p + p { margin-top: 16px; }
+
+  /* ── CONTACT ── */
+  .contact {
+    background: var(--ink);
+    padding: 80px 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: end;
+  }
+
+  .contact-left {}
+
+  .contact-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 44px;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .contact-heading em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .contact-note {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.8;
+    max-width: 360px;
+  }
+
+  .contact-right {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .contact-person {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 28px;
+  }
+
+  .contact-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .contact-title-role {
+    font-size: 10px;
+    font-weight: 200;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 14px;
+  }
+
+  .contact-detail {
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.5);
+    line-height: 2;
+  }
+
+  .contact-detail a {
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-detail a:hover { color: var(--gold-light); }
+
+  .footer-bar {
+    background: #080807;
+    padding: 20px 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-brand {
+    font-size: 10px;
+    font-weight: 200;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+  }
+
+  .footer-brand span { color: var(--gold); opacity: 0.7; }
+
+  .footer-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 13px;
+    color: rgba(255,255,255,0.2);
+  }
+
+  @media (max-width: 768px) {
+    .cover { padding: 40px 32px; }
+    .intro, .features, .ideal, .heritage, .contact { padding: 60px 32px; }
+    .intro, .heritage, .contact { grid-template-columns: 1fr; gap: 40px; }
+    .features-grid { grid-template-columns: 1fr; }
+    .spec-strip { grid-template-columns: repeat(2, 1fr); padding: 48px 32px; gap: 32px; }
+    .spec-item { border-right: none; padding: 0; }
+    .ideal-grid { grid-template-columns: 1fr; }
+    .footer-bar { flex-direction: column; gap: 8px; padding: 20px 32px; }
+    .cover-logo { left: 32px; top: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-texture"></div>
+  <div class="cover-accent"></div>
+  <div class="cover-logo">La Mesa RV &nbsp;·&nbsp; <span>Luxury Van Division</span></div>
+  <div class="cover-content">
+    <p class="cover-eyebrow">Grech Motors &nbsp;·&nbsp; Executive Series</p>
+    <h1 class="cover-title">The<br><em>Lusso</em></h1>
+    <p class="cover-subtitle">Private &nbsp;·&nbsp; Mobile &nbsp;·&nbsp; Refined</p>
+    <div class="cover-rule"></div>
+    <p class="cover-tagline">Where the journey becomes the meeting room,<br>the first-class cabin, the quiet office in motion.</p>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro">
+  <div>
+    <p class="section-label">A Different Kind of Travel</p>
+    <h2 class="intro-statement">Not a van.<br>Not an RV.<br><em>A private suite</em><br>that moves.</h2>
+  </div>
+  <div class="intro-body">
+    <p>The Grech Lusso exists in a category of its own — positioned somewhere between a private jet and a chauffeured limousine, but with the freedom and autonomy neither can offer. It's the vehicle for those who don't separate travel from living well.</p>
+    <p>Built on the legendary Mercedes-Benz Sprinter 3500XD platform with a 170" extended high roof, the Lusso spans 24.2 feet of meticulously engineered space. Every detail — every surface, every control — has been reconsidered by Grech Motors' team of craftsmen with over 40 years of bespoke vehicle building experience.</p>
+    <p>We carry the Lusso at La Mesa RV. And we'd prefer to show it to you in person, without pressure, without a clock running.</p>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="features-header">
+    <div>
+      <p class="section-label">Interior Experience</p>
+      <h2 class="features-title">What Awaits Inside</h2>
+    </div>
+    <div class="features-rule"></div>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <span class="feature-number">01</span>
+      <p class="feature-name">Executive Seating</p>
+      <p class="feature-desc">Four aircraft-inspired GRECH Exclusive seats with power recline, independent leg lift, perforated leather, and integrated heating, cooling, and massage. Each with a folding metal tray table — boardroom-ready at altitude or ground level.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-number">02</span>
+      <p class="feature-name">iPad Command System</p>
+      <p class="feature-desc">Every function of the cabin — climate, privacy shades, lighting mood, entertainment — is orchestrated from a single intuitive iPad control panel. Effortless command without complexity.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-number">03</span>
+      <p class="feature-name">Private Rear Lounge</p>
+      <p class="feature-desc">Dual power sofas at the rear offer additional seating for up to 10 passengers total, and convert into a generously sized memory foam sleeping surface — seamlessly, without reconfiguration effort.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-number">04</span>
+      <p class="feature-name">Mercedes-Benz Foundation</p>
+      <p class="feature-desc">The Sprinter 3500XD chassis brings a 208HP high-output diesel engine, 9G-Tronic transmission, and Mercedes' full active safety suite — lane-keeping assist, active brake assist, and distance assist.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-number">05</span>
+      <p class="feature-name">Air Suspension Ride</p>
+      <p class="feature-desc">Adaptive air suspension absorbs the road before you feel it. The silence inside the Lusso at highway speed is remarkable — designed so conversation, focus, or rest is never interrupted by the journey itself.</p>
+    </div>
+    <div class="feature-card">
+      <span class="feature-number">06</span>
+      <p class="feature-name">Self-Sufficient Cabin</p>
+      <p class="feature-desc">An onboard kitchenette, private bathroom, and silent lithium-powered systems mean the Lusso doesn't require stops, facilities, or itinerary compromises. It's entirely self-contained.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SPEC STRIP -->
+<div class="spec-strip">
+  <div class="spec-item">
+    <div class="spec-value">24.2<span>ft</span></div>
+    <div class="spec-label">Total Length</div>
+  </div>
+  <div class="spec-item">
+    <div class="spec-value">10<span>pass</span></div>
+    <div class="spec-label">Passenger Capacity</div>
+  </div>
+  <div class="spec-item">
+    <div class="spec-value">208<span>hp</span></div>
+    <div class="spec-label">Diesel Output</div>
+  </div>
+  <div class="spec-item">
+    <div class="spec-value">40<span>+yr</span></div>
+    <div class="spec-label">Grech Craftsmanship</div>
+  </div>
+</div>
+
+<!-- IDEAL FOR -->
+<section class="ideal">
+  <p class="section-label">Who It's For</p>
+  <h2 class="features-title" style="font-family:'Cormorant Garamond',serif; font-weight:300; font-size:36px;">Ideal For</h2>
+  <div class="ideal-grid">
+    <div class="ideal-item">
+      <div class="ideal-icon"></div>
+      <div>
+        <p class="ideal-name">C-Suite & Executive Teams</p>
+        <p class="ideal-desc">Travel between meetings, events, or sites without the vulnerability of commercial transit. Full connectivity, privacy, and a working environment en route.</p>
+      </div>
+    </div>
+    <div class="ideal-item">
+      <div class="ideal-icon"></div>
+      <div>
+        <p class="ideal-name">Private Ground Transport</p>
+        <p class="ideal-desc">An alternative to car services for those who prefer ownership — or a premier addition to a professional fleet serving high-value clients and guests.</p>
+      </div>
+    </div>
+    <div class="ideal-item">
+      <div class="ideal-icon"></div>
+      <div>
+        <p class="ideal-name">Sports & Entertainment Principals</p>
+        <p class="ideal-desc">Athletes, coaches, and talent who travel frequently and value a controlled, private environment where recovery, preparation, and focus aren't compromised by transit.</p>
+      </div>
+    </div>
+    <div class="ideal-item">
+      <div class="ideal-icon"></div>
+      <div>
+        <p class="ideal-name">FBO-to-Venue Ground Link</p>
+        <p class="ideal-desc">For those who arrive by private aviation and require ground continuity at the same standard. The Lusso bridges the tarmac and the destination without interruption.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HERITAGE -->
+<section class="heritage">
+  <div class="heritage-pull">
+    "Over 40 years building vehicles where no detail is considered too small to perfect."
+  </div>
+  <div class="heritage-body">
+    <p>Grech Motors has spent four decades refining what it means to build a truly purposeful luxury vehicle. The Lusso is not their first iteration of this idea — it's the result of generations of feedback, engineering, and an uncompromising standard for materials and assembly.</p>
+    <p>As an authorized La Mesa RV dealer, we carry the Lusso alongside the broader Grech lineup. Our role isn't to push inventory — it's to help the right person find the right vehicle. If the Lusso isn't the fit, we'll tell you that too.</p>
+    <p>We believe a conversation is worth more than a brochure. Reach out to Doug or Joey directly, and we'll arrange a private walkthrough at your convenience.</p>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact">
+  <div class="contact-left">
+    <h2 class="contact-heading">Let's talk<br>when <em>you're</em><br>ready.</h2>
+    <p class="contact-note">No follow-up calls unless you ask. No pressure, no countdown timers. Just a straightforward conversation about whether the Lusso is right for you.</p>
+  </div>
+  <div class="contact-right">
+    <div class="contact-person">
+      <p class="contact-name">Doug Davis</p>
+      <p class="contact-title-role">Luxury Van Specialist &nbsp;·&nbsp; La Mesa RV</p>
+      <div class="contact-detail">
+        <a href="mailto:ddavis@lamesarv.com">ddavis@lamesarv.com</a>
+      </div>
+    </div>
+    <div class="contact-person">
+      <p class="contact-name">Joey Hreso</p>
+      <p class="contact-title-role">Luxury Van Specialist &nbsp;·&nbsp; La Mesa RV</p>
+      <div class="contact-detail">
+        <a href="mailto:jhreso@lamesarv.com">jhreso@lamesarv.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="footer-bar">
+  <div class="footer-brand">La Mesa RV &nbsp;·&nbsp; <span>Luxury Van Division</span></div>
+  <div class="footer-tagline">The Grech Lusso — available for private viewing by appointment</div>
+</div>
+
+</body>
+</html>
